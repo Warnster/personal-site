@@ -1,7 +1,12 @@
+import { CV } from "@/containers/cv";
+
 export default function Home() {
+
+  // return a container component that uses tailwindcss
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="container px-4 mx-auto">
+      <CV></CV>
+    </div>
+
   )
 }
