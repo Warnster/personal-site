@@ -15,9 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-mono">
         <Navbar/>
-        <div className="mt-4">
         {children}
-        </div>
         </body>
     </html>
   )

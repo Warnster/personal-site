@@ -1,70 +1,42 @@
-import { AWSBadge } from "@/components/badges/aws-badge";
-import { AzureBadge } from "@/components/badges/azure-badge";
-import { DockerBadge } from "@/components/badges/docker-badge";
-import { GraphQLBadge } from "@/components/badges/graphql-badge";
-import { MongoDbBadge } from "@/components/badges/mongodb-badge";
-import { NextBadge } from "@/components/badges/next-badge";
-import { NodeBadge } from "@/components/badges/node-badge";
-import { ReactBadge } from "@/components/badges/react-badge";
-import { SqlServerBadge } from "@/components/badges/sql-server-badge";
-import { StorybookBadge } from "@/components/badges/storybook-badge";
-import { TypescriptBadge } from "@/components/badges/typescript-badge";
+"use client";
 import { cvJobs } from "@/data/cv-data";
-import { Badges, CVJob } from "@/data/types";
+import { CVJob } from "@/data/types";
 import Image from "next/image";
+import { DisplayBadges } from "./display-badges";
+import { ProfileImage } from "@/components/profile-image/profile-image";
+
 
 export const CV = () => {
   return (
-    <div className="lg:px-16 px-4">
-      <h1 className="text-3xl text-center mb-2">Curriculum Vitae</h1>
-      <h2 className="text-2xl mb-8">Work Experience</h2>
-      {cvJobs.map((job) => {
-        return <CVRow key={job.companyName} job={job} />;
-      })}
+    <div className="grid grid-cols-cv">
+      <div className="md:hidden col-span-full">
+        <h1 className="text-3xl text-center py-4">Curriculum Vitae</h1>
+      </div>
+      <div className="col-span-full md:col-span-1 bg-gray-600 pt-4 text-gray-200 pb-8 px-4">
+        <ProfileImage />
+        <h1 className="text-2xl text-center">Lewis Warner</h1>
+        <p className="mx-2 mt-2">
+        I’ve spent 6 years in corporate software engineering; my experience is based around Nodejs, React, Docker Graphql and Linux. I strive to learn as much as I can to help come up with the best solutions to software problems. As I’ve progressed into more senior roles I’ve enjoyed coaching juniors and outlining / implementing software methodologies, processes and improvements.
+        </p>
+      </div>
+      <div className="col-span-full md:col-span-1">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl text-center  hidden md:block">Curriculum Vitae</h1>
+          <h2 className="text-2xl mb-8 mt-2 text-center md:text-left">Work Experience</h2>
+          {cvJobs.map((job) => {
+            return <CVRow key={job.companyName} job={job} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 };
 
-const DisplayBadges = ({ badges }: { badges: Badges[] }) => {
-  return (
-    <>
-    {badges.map((badge) => {
-      switch (badge) {
-        case "react":
-          return <ReactBadge key={badge} title={"React"} />;
-        case "react-native":
-          return <ReactBadge key={badge} title={"React Native"} />;
-        case "next":
-          return <NextBadge key={badge} />;
-        case "graphql":
-          return <GraphQLBadge key={badge} />;
-        case "node":
-          return <NodeBadge key={badge} />;
-        case "typescript":
-          return <TypescriptBadge key={badge} />;
-        case "azure":
-          return <AzureBadge key={badge} />;
-        case "sql-server":
-          return <SqlServerBadge key={badge} />;
-        case "mongo":
-          return <MongoDbBadge key={badge} />;
-        case "aws":
-          return <AWSBadge key={badge} />;
-        case "storybook":
-          return <StorybookBadge key={badge} />;
-        case "docker":
-          return <DockerBadge key={badge} />;
-        default:
-          return <span>{badge}</span>
-      }
-    })}
-    </>
-  );
-};
-
 export const CVRow = ({ job }: { job: CVJob }) => {
+  const badges = job.badges;
+
   return (
-    <div className="grid grid-cols-cv gap-4 mb-8">
+    <div className="grid grid-cols-cv-row gap-4 mb-8">
       <div className="col-span-1">
         <div className="h-16 w-16 rounded-full overflow-hidden bg-gray-100">
           <a href={job.companyImageLink} target="_blank">
@@ -77,7 +49,7 @@ export const CVRow = ({ job }: { job: CVJob }) => {
           </a>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-2">
         <p>{job.title}</p>
         <p className="mt-1 text-gray-500">{job.companyName}</p>
         <p className="mt-1 text-gray-500">{job.date}</p>
@@ -85,9 +57,11 @@ export const CVRow = ({ job }: { job: CVJob }) => {
       <div className="col-span-full">
         <p className="text-md">{job.description}</p>
       </div>
-      
+
       <div className="col-span-full">
-        <DisplayBadges badges={job.badges}/>
+        {/** write a rounded button with a gradient colour going from purple to pink, on hover it should highlight */}
+
+        <DisplayBadges badges={badges} />
       </div>
     </div>
   );

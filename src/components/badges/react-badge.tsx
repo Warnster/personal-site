@@ -12,7 +12,7 @@ export const ReactBadge = ({title}: {title: string}) => {
             </g>
         </svg>
         </div>
-        <span className="font-bold text-white">{title}</span>
+        <span className="font-bold">{title}</span>
         </div>
     );
     };

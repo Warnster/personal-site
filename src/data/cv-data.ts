@@ -10,7 +10,7 @@ export const cvJobs: CVJob[] = [
     companyImageUrl: "/shell.jfif",
     companyImageLink: "https://www.linkedin.com/company/shell/",
     companyImageAlt: "Shell Logo",
-    badges: ["react", "typescript", "node", "sql-server", "azure", "next", "mongo", "storybook", "graphql", "docker"],
+    badges: ["react", "typescript", "node", "playwright","sql-server", "azure", "next", "mongo", "storybook", "graphql", "docker", "jest", "kibana"],
   },
   {
     date: "May 2021 - Apr 2022 · 1 year",
@@ -21,7 +21,7 @@ export const cvJobs: CVJob[] = [
     companyImageUrl: "/And-digital.jfif",
     companyImageLink: "https://www.linkedin.com/company/and_digital/",
     companyImageAlt: "And Digital Logo",
-    badges: ["react", "react-native", "next", "typescript", "node", "mongo", "storybook", "aws", "docker", "expo"],
+    badges: ["react", "react-native", "next", "typescript", "node", "mongo", "storybook", "aws", "docker", "expo", "jest", "kibana", "loopback", "selenium"],
   },
   {
     date: "Jul 2020 - Apr 2021 · 10 months",
@@ -32,6 +32,28 @@ export const cvJobs: CVJob[] = [
     companyImageUrl: "/tomorrows.png",
     companyImageLink: "https://www.linkedin.com/company/tomorrow's-guides/",
     companyImageAlt: "Tomorrow's Guide Logo",
-    badges: ["react", "typescript", "node", "azure", "jest", "docker"],
+    badges: ["react", "typescript", "node", "azure", "jest", "docker", "sql-server"],
+  },
+  {
+    date: "Jan 2019 - Sep 2020 · 1 yr 9 mos",
+    companyName: "Ethixbase",
+    title: "Full Stack Engineer",
+    description:
+      `This position involved working with several technologies including: nodejs, docker, linux, SSO, aws, nginx, javascript, react, babel, webpack, gitlab cicd,, mongodb. This position involved development, design and maintenance of multiple RegTech systems.
+      The Roles included
+      Designing and building a new microservice RESTFUL API’s with, in php (Laravel, lumen) or nodejs (express or nestjs) depending on microservice requirements.
+      Implementing Single Sign On authentication into the main application for corporate clients.
+      Automating the testing and deployment using gitlab cicd, codeception, jest and robot framework.
+      Containerising multiple applications with docker to speed up development and testing on environments and managing of microservices.
+      Giving tutorials / training to fellow employees over several topics including: Frontend / backend Frameworks, Migrations, Testing, Continuous Integrations and SSO
+      Identifying and Creating Requirements from client meetings.
+      Working with a team of 9 developers, sometimes in a lead position depending on the project.
+      Normalisation of database schemas and legacy data migration.
+      Move production and development environments from digital ocean to AWS with automatic deployment done through docker + Kubernetes on ecs
+      Design and implementation of a migration from hybrid js and php legacy frontend to React`,
+    companyImageUrl: "/ethixbase.jfif",
+    companyImageLink: "https://www.linkedin.com/company/ethixbase360/",
+    companyImageAlt: "Ethixbase360 Logo",
+    badges: ["react", "typescript", "node", "aws", "jest", "docker", "mysql", "php", "laravel", "nest"],
   },
 ];

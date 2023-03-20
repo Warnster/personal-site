@@ -14,9 +14,14 @@ module.exports = {
         "mongodb": "#599636",
         "storybook": "#FF4785",
         "docker": "#066da5",
+        "jest": "#99425B",
+        "loopback": "#3F5DFF",
+        "playwright": "#99425B",
+        "selenium": "#2CB134",
       },
       gridTemplateColumns: {
-        cv: '64px minmax(0, 1fr) minmax(0, 1fr)'
+        "cv-row": '64px minmax(0, 1fr) minmax(0, 1fr)',
+        "cv": '300px 1fr'
       }
     },
   },

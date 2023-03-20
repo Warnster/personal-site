@@ -13,6 +13,7 @@ export type Badges =
   | "react"
   | "react-native"
   | "next"
+  | "playwright"
   | "aws"
   | "azure"
   | "sql-server"
@@ -23,4 +24,12 @@ export type Badges =
   | "storybook"
   | "graphql"
   | "jest"
-  | "expo";
+  | "expo"
+  | "kibana"
+  | "mysql"
+  | "loopback"
+  | "php"
+  | "selenium"
+  | "laravel"
+  | "mysql"
+  | "nest";
