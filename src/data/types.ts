@@ -3,9 +3,9 @@ export interface CVJob {
   companyName: string;
   title: string;
   description: string;
-  companyImageUrl: string;
-  companyImageLink: string;
-  companyImageAlt: string;
+  companyImageUrl?: string;
+  companyImageLink?: string;
+  companyImageAlt?: string;
   badges: Badges[];
 }
 
@@ -32,4 +32,7 @@ export type Badges =
   | "selenium"
   | "laravel"
   | "mysql"
+  | "symphony"
+  | "angular"
+  | "javascript"
   | "nest";

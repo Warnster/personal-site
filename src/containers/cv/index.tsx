@@ -39,6 +39,7 @@ export const CVRow = ({ job }: { job: CVJob }) => {
     <div className="grid grid-cols-cv-row gap-4 mb-8">
       <div className="col-span-1">
         <div className="h-16 w-16 rounded-full overflow-hidden bg-gray-100">
+          {job.companyImageUrl ? 
           <a href={job.companyImageLink} target="_blank">
             <Image
               src={job.companyImageUrl}
@@ -46,7 +47,7 @@ export const CVRow = ({ job }: { job: CVJob }) => {
               height={64}
               alt={job.companyImageAlt}
             />
-          </a>
+          </a> : <JobIconPlaceholder />}
         </div>
       </div>
       <div className="col-span-2">
@@ -59,8 +60,6 @@ export const CVRow = ({ job }: { job: CVJob }) => {
       </div>
 
       <div className="col-span-full">
-        {/** write a rounded button with a gradient colour going from purple to pink, on hover it should highlight */}
-
         <DisplayBadges badges={badges} />
       </div>
     </div>

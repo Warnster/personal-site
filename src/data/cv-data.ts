@@ -56,4 +56,24 @@ export const cvJobs: CVJob[] = [
     companyImageAlt: "Ethixbase360 Logo",
     badges: ["react", "typescript", "node", "aws", "jest", "docker", "mysql", "php", "laravel", "nest"],
   },
+  {
+    date: "Sep 2017 - Dec 2018 · 1 yr 4 months",
+    companyName: "Goobie",
+    title: "Founder",
+    description: `This role involved building a restful API in NodeJS (NestJs) with a Javascript React frontend. React Native IOS and Android app. The webapp being developed was a customer / admin style portal for musicians and venues to create and manage events. I hosted it on amazon web services, this involved using EC2, Cloudfront, S3, Pinpoint, Route 53, Load balancing, rds and auto scaling. I worked on hosting the platform in AWS with docker containers.`,
+    companyImageUrl: "",
+    companyImageLink: "",
+    companyImageAlt: "",
+    badges: ["react", "aws", "react-native", "node", "docker", "typescript"]
+  },
+  {
+    date: "Jun 2016 - Aug 2018 · 2 yrs 3 months",
+    companyName: "Lawson Connor",
+    title: "Full Stack Engineer",
+    description: `This role involved continued development and complete migration of code, data and architecture from the monolithic MPA to microservices. Microservices were built using symphony 3 php. The team used an agile approach and consisted of 5 developers. I worked with experienced developers and really grew my knowledge and skill in building loosely coupled microservices, each with it’s own separation of concern. The frontend was rebuilt with Angular 2. I gained experience in how to safely migrate data and restructure the database schema to be normalised.`,
+    companyImageUrl: "/lawson-connor.png",
+    companyImageLink: "https://pitchbook.com/profiles/company/170855-20#overview",
+    companyImageAlt: "Lawson Connor Logo",
+    badges: ["angular", "symphony", "mysql", "php", "javascript",]
+  },
 ];
