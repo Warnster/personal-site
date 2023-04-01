@@ -1,4 +1,4 @@
-import './globals.css';
+import  './globals.css';
 import * as React from 'react'
 import Head from 'next/head'
 import { Navbar } from '@/components/navbar';
