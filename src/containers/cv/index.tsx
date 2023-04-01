@@ -4,8 +4,24 @@ import { CVJob } from "@/data/types";
 import Image from "next/image";
 import { DisplayBadges } from "./display-badges";
 import { ProfileImage } from "@/components/profile-image/profile-image";
+import { ReadMore } from "@/components/read-more"; 
+import { Description } from "./description";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import remarkGfm from 'remark-gfm';
 
+const markdown = `A paragraph with *emphasis* and **strong importance**.
 
+> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+* Lists
+* [ ] todo
+* [x] done
+
+A table:
+
+| a | b |
+| - | - |
+`
 export const CV = () => {
   return (
     <div className="grid grid-cols-cv">
@@ -26,6 +42,17 @@ export const CV = () => {
           {cvJobs.map((job) => {
             return <CVRow key={job.companyName} job={job} />;
           })}
+          <h2 className="text-2xl mb-8 mt-2 text-center md:text-left">Education</h2>
+          <CVRow job={{
+            badges: [],
+            date: "Sep 2015 - May 2018",
+            description: "Write about my experience",
+            companyName: "University of Greenwich",
+            companyImageAlt: "University of Greenwich Logo",
+            companyImageLink: "https://www.gre.ac.uk/undergraduate-courses/engsci/computer-science-bsc-hons#study-outline",
+            companyImageUrl: "/greenwich.jfif",
+            title: "BSc Computer Science (Hons) - First-Class Honours",
+          }} />
         </div>
       </div>
     </div>
@@ -56,7 +83,8 @@ export const CVRow = ({ job }: { job: CVJob }) => {
         <p className="mt-1 text-gray-500">{job.date}</p>
       </div>
       <div className="col-span-full">
-        <p className="text-md">{job.description}</p>
+       {/* <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]}/>      */}
+       {job.description}
       </div>
 
       <div className="col-span-full">

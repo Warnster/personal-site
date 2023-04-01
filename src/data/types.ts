@@ -2,7 +2,7 @@ export interface CVJob {
   date: string;
   companyName: string;
   title: string;
-  description: string;
+  description: React.ReactNode;
   companyImageUrl: string;
   companyImageLink: string;
   companyImageAlt: string;

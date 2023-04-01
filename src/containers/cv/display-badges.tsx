@@ -20,6 +20,7 @@ import { StorybookBadge } from "@/components/badges/storybook-badge";
 import { TypescriptBadge } from "@/components/badges/typescript-badge";
 import { Badges } from "@/data/types";
 
+
 export const DisplayBadges = ({ badges }: { badges: Badges[] }) => {
     return (
       <>
