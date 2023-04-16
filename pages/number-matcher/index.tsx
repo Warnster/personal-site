@@ -129,6 +129,7 @@ export const NumberMatcher = () => {
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
+                        <th className="px-6 py-3">Table Index</th>
                         <th className="px-6 py-3">Last 4 Digits</th>
                         <th className="px-6 py-3">Amount</th>
                         <th className="px-6 py-3">Opera Index</th>
@@ -137,14 +138,15 @@ export const NumberMatcher = () => {
                 </thead>
                 <tbody>
                     
-        {matchingRows.map(({agentIndex, operaIndex}) => {
+        {matchingRows.map(({agentIndex, operaIndex}, index) => {
             const operaRow = operaInvoiceData[operaIndex];
             return (
                 <tr key={agentIndex + operaIndex + operaRow.last4Digits} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td className="px-6 py-4">{index}</td>
                     <td className="px-6 py-4">{operaRow.last4Digits}</td>
                     <td className="px-6 py-4">{operaRow.amount}</td>
-                    <td className="px-6 py-4">{operaIndex}</td>
-                    <td className="px-6 py-4">{agentIndex}</td>
+                    <td className="px-6 py-4">{operaIndex + 2}</td>
+                    <td className="px-6 py-4">{agentIndex + 2}</td>
                 </tr>
             )
         })}
