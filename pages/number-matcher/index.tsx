@@ -56,9 +56,9 @@ export const NumberMatcher = () => {
         const data = fileData[i];
         const matchingRow = matchingRows.find((row) => row.agentIndex === i);
         if (matchingRow) {
-            data["Matched"] = "Yes";
+            data["Matched"] = "Yesss";
         } else {
-            data["Matched"] = "";
+            data["Matched"] = "No";
         }
     }
 
