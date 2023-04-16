@@ -2,7 +2,7 @@ import { MatchingRow, SantisedInvoice } from "@/containers/number-matcher/types"
 import { readCsv, searchAgent } from "@/containers/number-matcher/utils";
 import { useRef, useState } from "react";
 
-const operaCardNumberHeader = "CardNumber";
+const operaCardNumberHeader = "Card Number";
 const operaAmountHeader = "Open";
 
 export const NumberMatcher = () => {
