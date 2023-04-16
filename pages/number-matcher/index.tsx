@@ -48,6 +48,13 @@ export const NumberMatcher = () => {
   const agentSortedMatchingRows = matchingRows.sort((a, b) => a.agentIndex - b.agentIndex);
   const agentSet = new Set();
 
+  // calculate the sum of amount for agentSortedMatchingRows
+    const agentSum = agentSortedMatchingRows.reduce((acc, curr) => {
+        const agentRow = agentInvoiceData[curr.agentIndex];
+        const agentAmount = agentRow.amount;
+        return acc + agentAmount;
+    }, 0);
+
   return (
     <>
     <div className="w-full max-w-xs m-8">
@@ -133,7 +140,7 @@ export const NumberMatcher = () => {
                     <tr>
                         <th className="px-6 py-3">Table Index</th>
                         <th className="px-6 py-3">Last 4 Digits</th>
-                        <th className="px-6 py-3">Amount</th>
+                        <th className="px-6 py-3">Amount (${agentSum})</th>
                         <th className="px-6 py-3">Opera Index</th>
                         <th className="px-6 py-3">Agent Index</th>
                     </tr>
