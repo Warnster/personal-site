@@ -44,7 +44,9 @@ export const NumberMatcher = () => {
     setAgentInvoiceData(agentInvoiceData);
   };
 
-
+  // sort matching rows by agent index
+  const agentSortedMatchingRows = matchingRows.sort((a, b) => a.agentIndex - b.agentIndex);
+  const agentSet = new Set();
 
   return (
     <>
@@ -138,11 +140,17 @@ export const NumberMatcher = () => {
                 </thead>
                 <tbody>
                     
-        {matchingRows.map(({agentIndex, operaIndex}, index) => {
+
+        {agentSortedMatchingRows.map(({agentIndex, operaIndex}, index) => {
+            // keep track of matching agentIndexes 
             const operaRow = operaInvoiceData[operaIndex];
+            const isDuplicate = agentSet.has(agentIndex);
+            if(!isDuplicate) {
+                agentSet.add(agentIndex);
+            }
             return (
-                <tr key={agentIndex + operaIndex + operaRow.last4Digits} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td className="px-6 py-4">{index}</td>
+                <tr key={agentIndex + operaIndex + operaRow.last4Digits} className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${isDuplicate ? 'text-red-400' : ''}`}>
+                    <td className="px-6 py-4">{index + 1}</td>
                     <td className="px-6 py-4">{operaRow.last4Digits}</td>
                     <td className="px-6 py-4">{operaRow.amount}</td>
                     <td className="px-6 py-4">{operaIndex + 2}</td>
