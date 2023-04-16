@@ -23,7 +23,7 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
         const fileText = e.target?.result;
         if (!fileText) reject("File is empty");
   
-        const fileRows = (fileText as string).split("\n");
+        const fileRows = (fileText as string).split("\r\n");
         const fileHeaders = fileRows[0].split(",");
         const fileData = fileRows.slice(1).map((row) => {
           const rowData = row.split(",");
@@ -59,13 +59,17 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
   };
   
 
-  export const searchAgent = ({ last4Digits, amount }: CleanInvoice, agentSheet: SantisedInvoice[]) => {
+  export const searchAgent = ({ last4Digits, amount }: CleanInvoice, agentSheet: SantisedInvoice[], duplicates: {[key: string]: number[]}) => {
     for (let i = 0; i < agentSheet.length; i++) {
       const agentRowRaw = agentSheet[i];
       if(agentRowRaw.empty) continue;
       const agentRow = santiseData(agentRowRaw);
-      console.log({last4Digits, amount, agentRow})
+      const key = `${agentRow.last4Digits}-${agentRow.amount}`;
       if (agentRow.amount === amount && agentRow.last4Digits === last4Digits) {
+        // If there is already a match for this agentRowIndex then skip it and find the next
+        if(duplicates[key] && duplicates[key].includes(i)) {
+          continue;
+        }
         return i;
       }
     }
@@ -86,8 +90,8 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
       fileReader.onload = (e) => {
         const fileText = e.target?.result;
         if (!fileText) reject("File is empty");
-  
-        const fileRows = (fileText as string).split("\n");
+        console.log({fileText})
+        const fileRows = (fileText as string).split("\r\n");
         const fileHeaders = fileRows[0].split(",");
         const fileData = fileRows.map((row) => {
           const rowData = row.split(",");
@@ -101,4 +105,13 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
         return resolve({fileData: fileData.slice(1), fileHeaders});
       };
     });
+  }
+
+export  const downloadCsvFromUri = (encodedUri: string) => {
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "myData.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
