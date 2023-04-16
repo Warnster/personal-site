@@ -25,7 +25,7 @@ export const santiseData = ({ cardNumber, amount }: Invoice): SantisedInvoice =>
   
         const fileRows = (fileText as string).split("\n");
         const fileHeaders = fileRows[0].split(",");
-        const fileData = fileRows.slice(1).map((row, index) => {
+        const fileData = fileRows.slice(1).map((row) => {
           const rowData = row.split(",");
           const rowDataObject: any = {};
           fileHeaders.forEach((header, index) => {
@@ -33,8 +33,14 @@ export const santiseData = ({ cardNumber, amount }: Invoice): SantisedInvoice =>
           });
           return rowDataObject;
         });
-  
-        const sanitisedData = fileData.map((data) => {
+        
+        // this will filter out undefined rows with no data.
+        console.log({fileData})
+        const filterRows = fileData.filter((data) => {
+          return data[cardNumberHeader] && data[amountHeader]
+        })
+        console.log({filterRows})
+        const sanitisedData = filterRows.map((data) => {
             console.log({data, amount: data[amountHeader], cardNumber: data[cardNumberHeader], cardNumberHeader, amountHeader})
 
           return santiseData({
