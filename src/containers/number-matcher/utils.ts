@@ -1,4 +1,3 @@
-import { RefObject } from "react";
 import { Invoice, SantisedInvoice } from "./types";
 
 export const santiseData = ({ cardNumber, amount }: Invoice): SantisedInvoice => {
