@@ -78,16 +78,17 @@ export const NumberMatcher = () => {
     const { fileData, fileHeaders } = await highlightCsv(agentFile.current);
     console.log({ fileData, fileHeaders });
     // loop through fileHeaders and add a new header to the array after a header with the value amountHeader
+    const invoiceNumberTrim = invoiceNumber.trim();
     const amountHeaderIndex = fileHeaders.indexOf(amountHeader);
-    fileHeaders.splice(amountHeaderIndex + 1, 0, invoiceNumber);
+    fileHeaders.splice(amountHeaderIndex + 1, 0, invoiceNumberTrim);
     // loop through fileData and add a new property to each object after the property with the key amountHeader
     for (let i = 0; i < fileData.length; i++) {
       const data = fileData[i];
       const matchingRow = matchingRows.find((row) => row.agentIndex === i);
       if (matchingRow) {
-        data[invoiceNumber] = "Yes";
+        data[invoiceNumberTrim] = "Yes";
       } else {
-        data[invoiceNumber] = "No";
+        data[invoiceNumberTrim] = "No";
       }
     }
 
@@ -95,7 +96,7 @@ export const NumberMatcher = () => {
     let csvContent = "data:text/csv;charset=utf-8,";
     // add to the csv content the headers
     csvContent += fileHeaders.join(",");
-    csvContent += "\r";
+    csvContent += "\r\n";
     for (let i = 0; i < fileData.length; i++) {
       const data = fileData[i];
       console.log({ data });
@@ -113,7 +114,7 @@ export const NumberMatcher = () => {
           csvContent += escapedCellValue;
         }
       }
-      csvContent += "\r";
+      csvContent += "\r\n";
     }
 
     const encodedUri = encodeURI(csvContent);

@@ -23,7 +23,7 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
         const fileText = e.target?.result;
         if (!fileText) reject("File is empty");
   
-        const fileRows = (fileText as string).split("\r\n");
+        const fileRows = (fileText as string).split(/\r?\n/);
         const fileHeaders = fileRows[0].split(",");
         const fileData = fileRows.slice(1).map((row) => {
           const rowData = row.split(",");
@@ -91,7 +91,9 @@ export const santiseData = ({ cardNumber, amount }: Invoice): CleanInvoice => {
         const fileText = e.target?.result;
         if (!fileText) reject("File is empty");
         console.log({fileText})
-        const fileRows = (fileText as string).split("\r\n");
+        // handle splitting a string into and array of string where the carridge return could be \r or \r\n or \n
+
+        const fileRows = (fileText as string).split(/\r?\n/);
         const fileHeaders = fileRows[0].split(",");
         const fileData = fileRows.map((row) => {
           const rowData = row.split(",");
