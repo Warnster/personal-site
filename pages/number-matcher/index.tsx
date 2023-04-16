@@ -1,5 +1,5 @@
-import { MatchingRow, SantisedInvoice } from "@/containers/number-matcher/types";
-import { readCsv, searchAgent } from "@/containers/number-matcher/utils";
+import { CleanInvoice, MatchingRow, SantisedInvoice } from "@/containers/number-matcher/types";
+import { highlightCsv, readCsv, searchAgent } from "@/containers/number-matcher/utils";
 import { useRef, useState } from "react";
 
 const operaCardNumberHeader = "Card Number";
@@ -28,7 +28,7 @@ export const NumberMatcher = () => {
     console.log({agentInvoiceData})
     const matchingRows: MatchingRow[] = [];
     for (let i = 0; i < operaInvoiceData.length; i++) {
-      const operaRow = operaInvoiceData[i];
+      const operaRow = operaInvoiceData[i] as CleanInvoice;
       const matchingAgentIndex = searchAgent(operaRow, agentInvoiceData);
 
       if (matchingAgentIndex > -1) {
@@ -42,7 +42,65 @@ export const NumberMatcher = () => {
     setMatchingRows(matchingRows);
     setOperaInvoiceData(operaInvoiceData);
     setAgentInvoiceData(agentInvoiceData);
+    console.log({matchingRows})
   };
+
+  const downloadAgentCsv = async () => {
+    const {fileData, fileHeaders} = await highlightCsv(agentFile.current)
+    console.log({fileData, fileHeaders});
+    // loop through fileHeaders and add a new header to the array after a header with the value amountHeader
+    const amountHeaderIndex = fileHeaders.indexOf(amountHeader);
+    fileHeaders.splice(amountHeaderIndex + 1, 0, "Matched");
+    // loop through fileData and add a new property to each object after the property with the key amountHeader
+    for (let i = 0; i < fileData.length; i++) {
+        const data = fileData[i];
+        const matchingRow = matchingRows.find((row) => row.agentIndex === i);
+        if (matchingRow) {
+            data["Matched"] = "Yes";
+        } else {
+            data["Matched"] = "";
+        }
+    }
+
+    
+    // write code to output a csv file with the headers and data
+    let csvContent = "data:text/csv;charset=utf-8,";
+    // add to the csv content the headers
+    csvContent += fileHeaders.join(",");
+    csvContent += "\r";
+    for(let i = 0; i < fileData.length; i++) {
+        const data = fileData[i];
+        console.log({data})
+        for (let j = 0; j < fileHeaders.length; j++) {
+            const header = fileHeaders[j];
+        
+            // if data[header] is undefined or null, add an empty string to the CSV
+            const cellValue = data[header] ?? "";
+        
+            // add a comma after each data item, except for the last one
+            if (j !== fileHeaders.length - 1) {
+              csvContent += cellValue + ",";
+            } else {
+              csvContent += cellValue;
+            }
+          }
+        csvContent += "\r";
+    }
+    
+    const encodedUri = encodeURI(csvContent);
+    console.log({csvContent})
+    downloadCsvFromUri(encodedUri);
+
+  }
+
+  const downloadCsvFromUri = (encodedUri: string) => {
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "myData.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
   // sort matching rows by agent index
   const agentSortedMatchingRows = matchingRows.sort((a, b) => a.agentIndex - b.agentIndex);
@@ -50,11 +108,12 @@ export const NumberMatcher = () => {
 
   // calculate the sum of amount for agentSortedMatchingRows
     const agentSum = agentSortedMatchingRows.reduce((acc, curr) => {
-        const agentRow = agentInvoiceData[curr.agentIndex];
+        const agentRow = agentInvoiceData[curr.agentIndex]
+        if(agentRow.empty) return acc;
         const agentAmount = agentRow.amount;
         return acc + agentAmount;
     }, 0);
-
+    console.log({agentSortedMatchingRows})
   return (
     <>
     <div className="w-full max-w-xs m-8">
@@ -128,6 +187,13 @@ export const NumberMatcher = () => {
           >
             Run
           </button>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={downloadAgentCsv}
+          >
+            Download highlighted Agent CSV
+          </button>
         </div>
       </form>
     </div>
@@ -140,7 +206,7 @@ export const NumberMatcher = () => {
                     <tr>
                         <th className="px-6 py-3">Table Index</th>
                         <th className="px-6 py-3">Last 4 Digits</th>
-                        <th className="px-6 py-3">Amount (${agentSum})</th>
+                        <th className="px-6 py-3">Amount ({agentSum})</th>
                         <th className="px-6 py-3">Opera Index</th>
                         <th className="px-6 py-3">Agent Index</th>
                     </tr>
@@ -151,6 +217,7 @@ export const NumberMatcher = () => {
         {agentSortedMatchingRows.map(({agentIndex, operaIndex}, index) => {
             // keep track of matching agentIndexes 
             const operaRow = operaInvoiceData[operaIndex];
+            if(operaRow.empty) return null;
             const isDuplicate = agentSet.has(agentIndex);
             if(!isDuplicate) {
                 agentSet.add(agentIndex);
