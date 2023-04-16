@@ -2,35 +2,6 @@ import { MatchingRow, SantisedInvoice } from "@/containers/number-matcher/types"
 import { readCsv, searchAgent } from "@/containers/number-matcher/utils";
 import { useRef, useState } from "react";
 
-
-// This is the janky java program excel sheet. It represents 1 invoice
-// const operaExcelSheet: Invoice[] = [
-//   {
-//     amount: 143.42,
-//     cardNumber: "231235XXXX123434",
-//   },
-//   {
-//     amount: 12343.42,
-//     cardNumber: "231235XXXX1234598764",
-//   },
-//   {
-//     amount: 123.45,
-//     cardNumber: "231235XXXX123454",
-//   },
-// ];
-
-// This does not have all of the invoices that are in opera. It has multiple invoices in it
-// const agentExcelSheet: Invoice[] = [
-//   {
-//     amount: 123.45,
-//     cardNumber: "231235XXXX123454",
-//   },
-//   {
-//     amount: 143.42,
-//     cardNumber: "231235XXXX123434",
-//   },
-// ];
-
 const operaCardNumberHeader = "CardNumber";
 const operaAmountHeader = "Open";
 

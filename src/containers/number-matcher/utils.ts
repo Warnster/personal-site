@@ -1,6 +1,7 @@
 import { Invoice, SantisedInvoice } from "./types";
 
 export const santiseData = ({ cardNumber, amount }: Invoice): SantisedInvoice => {
+  console.log('sanitise',{cardNumber, amount})
     const last4Digits = Number(cardNumber.slice(-4));
     return {
       cardNumber,
@@ -34,7 +35,7 @@ export const santiseData = ({ cardNumber, amount }: Invoice): SantisedInvoice =>
         });
   
         const sanitisedData = fileData.map((data) => {
-            console.log({data, amount: data[amountHeader]})
+            console.log({data, amount: data[amountHeader], cardNumber: data[cardNumberHeader], cardNumberHeader, amountHeader})
 
           return santiseData({
             cardNumber: data[cardNumberHeader],
