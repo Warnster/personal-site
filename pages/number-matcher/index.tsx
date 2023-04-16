@@ -75,13 +75,18 @@ export const NumberMatcher = () => {
             const header = fileHeaders[j];
         
             // if data[header] is undefined or null, add an empty string to the CSV
+            
             const cellValue = data[header] ?? "";
-        
+            // escape commas from the cellValue for csv but keep them in the csv
+            const escapedCellValue = cellValue.replace(/,/g, "\,");
+
+            
+
             // add a comma after each data item, except for the last one
             if (j !== fileHeaders.length - 1) {
-              csvContent += cellValue + ",";
+              csvContent += escapedCellValue + ",";
             } else {
-              csvContent += cellValue;
+              csvContent += escapedCellValue;
             }
           }
         csvContent += "\r";
