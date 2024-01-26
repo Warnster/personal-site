@@ -2,6 +2,7 @@ import { AWSBadge } from "@/components/badges/aws-badge";
 import { AzureBadge } from "@/components/badges/azure-badge";
 import { DockerBadge } from "@/components/badges/docker-badge";
 import { ExpoBadge } from "@/components/badges/expo-badge";
+import { FigmaBadge } from "@/components/badges/figma-badge";
 import { GraphQLBadge } from "@/components/badges/graphql-badge";
 import { JestBadge } from "@/components/badges/jest-badge";
 import { KibanaBadge } from "@/components/badges/kibana-badge";
@@ -42,6 +43,8 @@ export const DisplayBadges = ({ badges }: { badges: Badges[] }) => {
               return <AzureBadge key={badge} />;
             case "sql-server":
               return <SqlServerBadge key={badge} />;
+            case "figma":
+              return <FigmaBadge key={badge} />;
             case "mongo":
               return <MongoDbBadge key={badge} />;
             case "aws":

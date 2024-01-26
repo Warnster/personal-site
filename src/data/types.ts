@@ -1,5 +1,6 @@
 export interface CVJob {
-  date: string;
+  startDate: Date;
+  endDate: Date;
   companyName: string;
   title: string;
   description: React.ReactNode;
@@ -35,4 +36,5 @@ export type Badges =
   | "symphony"
   | "angular"
   | "javascript"
-  | "nest";
+  | "nest"
+  | "figma";

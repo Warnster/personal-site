@@ -2,7 +2,19 @@ import { CVJob } from "./types";
 
 export const cvJobs: CVJob[] = [
   {
-    date: "May 2022 - Jan 2023 · 9 months",
+    startDate: new Date("2023-03-01"),
+    endDate: new Date("2024-02-28"),
+    companyName: "ARM PLC . Contract",
+    title: "Lead Frontend Engineer",
+    description: "I am currently leading the continued development of the ARM documentation website (developer.arm.com/documentation) and the forums product (community.arm.com), as well as various internal tools for ARM. My role, primarily front-end focused, includes overseeing a team of three developers and testers. While I am still actively involved in development using React and Next.js and design with Figma, my responsibilities also include planning upcoming features, liaising with stakeholders, external design companies, and other internal teams. This role also involves task management, sprint planning, and overseeing the testing and deployment process",
+    companyImageUrl: "/arm.jpeg",
+    companyImageLink: "https://www.linkedin.com/company/arm/",
+    companyImageAlt: "Arm Logo",
+    badges: ["react", "typescript", "next", "figma"],
+  },
+  {
+    startDate: new Date("2022-05-01"),
+    endDate: new Date("2023-01-28"),
     companyName: "Shell · Contract",
     title: "Senior Full Stack Engineer",
     description:
@@ -13,7 +25,8 @@ export const cvJobs: CVJob[] = [
     badges: ["react", "typescript", "node", "playwright","sql-server", "azure", "next", "mongo", "storybook", "graphql", "docker", "jest", "kibana"],
   },
   {
-    date: "May 2021 - Apr 2022 · 1 year",
+    startDate: new Date("2021-05-01"),
+    endDate: new Date("2022-04-28"),
     companyName: "AND Digital · Contract",
     title: "Full Stack Engineer",
     description:
@@ -24,7 +37,8 @@ export const cvJobs: CVJob[] = [
     badges: ["react", "react-native", "next", "typescript", "node", "mongo", "storybook", "aws", "docker", "expo", "jest", "kibana", "loopback", "selenium"],
   },
   {
-    date: "Jul 2020 - Apr 2021 · 10 months",
+    startDate: new Date("2020-07-01"),
+    endDate: new Date("2021-04-28"),
     companyName: "Tomorrow's Guide . Contract",
     title: "Full Stack Engineer",
     description:
@@ -35,7 +49,8 @@ export const cvJobs: CVJob[] = [
     badges: ["react", "typescript", "node", "azure", "jest", "docker", "sql-server"],
   },
   {
-    date: "Jan 2019 - Sep 2020 · 1 yr 9 mos",
+    startDate: new Date("2019-01-01"),
+    endDate: new Date("2020-09-28"),
     companyName: "Ethixbase",
     title: "Full Stack Engineer",
     description:
@@ -57,7 +72,8 @@ export const cvJobs: CVJob[] = [
     badges: ["react", "typescript", "node", "aws", "jest", "docker", "mysql", "php", "laravel", "nest"],
   },
   {
-    date: "Sep 2017 - Dec 2018 · 1 yr 4 months",
+    startDate: new Date("2017-09-01"),
+    endDate: new Date("2018-12-28"),
     companyName: "Goobie",
     title: "Founder",
     description: `This role involved building a restful API in NodeJS (NestJs) with a Javascript React frontend. React Native IOS and Android app. The webapp being developed was a customer / admin style portal for musicians and venues to create and manage events. I hosted it on amazon web services, this involved using EC2, Cloudfront, S3, Pinpoint, Route 53, Load balancing, rds and auto scaling. I worked on hosting the platform in AWS with docker containers.`,
@@ -67,7 +83,8 @@ export const cvJobs: CVJob[] = [
     badges: ["react", "aws", "react-native", "node", "docker", "typescript"]
   },
   {
-    date: "Jun 2016 - Aug 2018 · 2 yrs 3 months",
+    startDate: new Date("2016-05-01"),
+    endDate: new Date("2018-08-28"),
     companyName: "Lawson Connor",
     title: "Full Stack Engineer",
     description: `This role involved continued development and complete migration of code, data and architecture from the monolithic MPA to microservices. Microservices were built using symphony 3 php. The team used an agile approach and consisted of 5 developers. I worked with experienced developers and really grew my knowledge and skill in building loosely coupled microservices, each with it’s own separation of concern. The frontend was rebuilt with Angular 2. I gained experience in how to safely migrate data and restructure the database schema to be normalised.`,
