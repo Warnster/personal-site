@@ -2,15 +2,15 @@ import { CVJob } from "./types";
 
 export const cvJobs: CVJob[] = [
   {
-    startDate: new Date("2023-03-01"),
+    startDate: new Date("2023-5-01"),
     endDate: new Date("2024-02-28"),
     companyName: "ARM PLC . Contract",
-    title: "Lead Frontend Engineer",
-    description: "I am currently leading the continued development of the ARM documentation website (developer.arm.com/documentation) and the forums product (community.arm.com), as well as various internal tools for ARM. My role, primarily front-end focused, includes overseeing a team of three developers and testers. While I am still actively involved in development using React and Next.js and design with Figma, my responsibilities also include planning upcoming features, liaising with stakeholders, external design companies, and other internal teams. This role also involves task management, sprint planning, and overseeing the testing and deployment process",
+    title: "Software Engineer",
+    description: `This role focused on the continued development of the <a style="color: blue;" href="https://developer.arm.com/documentation" target="_blank">ARM documentation website</a>  and the <a style="color: blue;" href="https://community.arm.com" target="_blank">forums product</a>, as well as various internal tools for ARM. My role, primarily front-end focused, included overseeing a team of three developers and testers. I was still actively involved in development using React and Next.js and design with Figma, my responsibilities also include planning upcoming features, liaising with stakeholders, external design companies, and other internal teams. This role also involved task management, sprint planning, and overseeing the testing and deployment process. Occasional use of python and java was needed for backend services.`,
     companyImageUrl: "/arm.jpeg",
     companyImageLink: "https://www.linkedin.com/company/arm/",
     companyImageAlt: "Arm Logo",
-    badges: ["react", "typescript", "next", "figma"],
+    badges: ["react", "typescript", "next", "figma", "python", "java"],
   },
   {
     startDate: new Date("2022-05-01"),
@@ -18,11 +18,11 @@ export const cvJobs: CVJob[] = [
     companyName: "Shell · Contract",
     title: "Senior Full Stack Engineer",
     description:
-      "This role involved building an emission tracking software as part of a small team of devs, designers and project owners. I was based in the “agile hub” department which is focused on R&D products. I identified inefficiencies and weaknesses in the current ways of working and liaised with the lead dev and project managers to rectify these. The stack was Typescript, React frontend and monolith Graphql backend with Microsoft server sql, each of these I worked on daily. Other libraries included storybook and launchdarkly which I implemented for feature flagging",
+      "This role involved building an emission tracking software as part of a small team of devs, designers and project owners. I was based in the “agile hub” department which is focused on R&D products. I identified inefficiencies and weaknesses in the current ways of working and liaised with the lead dev and project managers to rectify these. The stack was Typescript, React frontend and monolith Graphql backend with python microservices and Microsoft server sql, each of these I worked on daily. Other libraries included storybook and launchdarkly which I implemented for feature flagging.",
     companyImageUrl: "/shell.jfif",
     companyImageLink: "https://www.linkedin.com/company/shell/",
     companyImageAlt: "Shell Logo",
-    badges: ["react", "typescript", "node", "playwright","sql-server", "azure", "next", "mongo", "storybook", "graphql", "docker", "jest", "kibana"],
+    badges: ["react", "typescript", "node", "playwright","sql-server", "azure", "next", "mongo", "storybook", "graphql", "docker", "jest", "kibana", "python"],
   },
   {
     startDate: new Date("2021-05-01"),
@@ -30,11 +30,11 @@ export const cvJobs: CVJob[] = [
     companyName: "AND Digital · Contract",
     title: "Full Stack Engineer",
     description:
-      "I worked as a consultant for Covea Insurance. The tech for the role was Typescript,React Native/React/NextJS and Nodejs/Loopback/graphql. I gained great experience in working in a large corporation and team. Streamlining and improving team efficiency and throughput as well as dealing with problems which can affect large projects or teams. This role has involved development of microservices and a micro frontend with a heavy emphasis on contract and regression testing. Other libraries included storybook and launchdarkly",
+      "I worked as a consultant for Covea Insurance. The tech for the role was Typescript,React Native/React/NextJS and Nodejs/Loopback/graphql and Java. I gained great experience in working in a large corporation and team. Streamlining and improving team efficiency and throughput as well as dealing with problems which can affect large projects or teams. This role has involved development of microservices and a micro frontend with a heavy emphasis on contract and regression testing. Other libraries included storybook and launchdarkly. Java was used for updating and maintaining the legacy systems in parallel with the new systems.",
     companyImageUrl: "/And-digital.jfif",
     companyImageLink: "https://www.linkedin.com/company/and_digital/",
     companyImageAlt: "And Digital Logo",
-    badges: ["react", "react-native", "next", "typescript", "node", "mongo", "storybook", "aws", "docker", "expo", "jest", "kibana", "loopback", "selenium"],
+    badges: ["react", "react-native", "next", "typescript", "node", "mongo", "storybook", "aws", "docker", "expo", "jest", "kibana", "loopback", "selenium", "java"],
   },
   {
     startDate: new Date("2020-07-01"),

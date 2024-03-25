@@ -40,9 +40,7 @@ export const CV = () => {
     <div className="grid grid-cols-cv">
       <div className="md:hidden col-span-full">
         <h1 className="text-3xl text-center">Curriculum Vitae</h1>
-        <p className="m-4 text-red-500">
-          <strong>Note:</strong> You will find me residing in Japan from February 2024 onwards teaching english, while i search for tech roles there.
-        </p>
+        
       </div>
       <div className="col-span-full md:col-span-1 bg-gray-600 pt-4 text-gray-200 pb-8 px-4">
         <ProfileImage />
@@ -61,9 +59,6 @@ export const CV = () => {
           <h1 className="text-3xl text-center  hidden md:block">
             Curriculum Vitae
           </h1>
-          <p className="m-4 text-red-500">
-          <strong>Note:</strong> You will find me residing in Japan from February 2024 onwards teaching english, while i search for tech roles there.
-        </p>
           <h2 className="text-2xl mb-8 mt-2 text-center md:text-left">
             Work Experience
           </h2>
@@ -146,7 +141,8 @@ export const CVRow = ({ job }: { job: CVJob }) => {
       </div>
       <div className="col-span-full">
         {/* <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]}/>      */}
-        {job.description}
+        <div dangerouslySetInnerHTML={{__html: job.description}}></div>
+       
       </div>
 
       <div className="col-span-full">
