@@ -3,7 +3,7 @@ export interface CVJob {
   endDate: Date;
   companyName: string;
   title: string;
-  description: React.ReactNode;
+  description: string;
   companyImageUrl: string;
   companyImageLink: string;
   companyImageAlt: string;
@@ -37,4 +37,6 @@ export type Badges =
   | "angular"
   | "javascript"
   | "nest"
-  | "figma";
+  | "figma"
+  | "java"
+  | "python";
